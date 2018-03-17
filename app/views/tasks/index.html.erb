@@ -2,16 +2,18 @@
 
 <% if @tasks.any? %>
 
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>id</th>
             <th>ステータス</th>
             <th>タスク内容</th>
+            <th>ユーザーID</th>
           </tr>
     </thead>
     <tbody>
-        <% @tasks.each do |task| %>
+        <% @tasks.each  do |task| %>
         <tr>
             <td>
                 <%= link_to task.id, task %>
@@ -22,6 +24,9 @@
             <td>
                 <%= task.content %>
             </td>
+            <td>
+                <%= task.user_id %>
+            </td>
         </tr>
     <% end %>
     </tbody>
@@ -29,7 +34,7 @@
 
 <div>
     <%= paginate @tasks %>
- </div>
+</div>
 <% end %>
 
 <%= link_to '新規タスクの投稿', new_task_path, class: "btn btn-primary" %>
